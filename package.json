@@ -3,15 +3,42 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
+  "build": {
+    "appId": "com.carol.app",
+    "directories": {
+      "app": "./"
+    },
+    "productName": "Carol_Calculator",
+    "dmg": {
+      "icon": "./images/mac.icns",
+      "window": {
+        "x": "200",
+        "y": "150",
+        "width": 500,
+        "height": 400
+      }
+    },
+    "mac": {
+      "icon": "./images/mac.icns"
+    },
+    "win": {
+      "icon": "./images/icon.ico"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "packageWin": "electron-packager ./ Carol --platform=win32 --out=./dist --arch=x64 --app-version=1.0.0 --icon=./images/icon.ico --overwrite",
+    "packageMac": "electron-packager ./ Carol --platform=darwin --out=./dist --arch=x64 --app-version=1.0.0 --icon=./images/mac.icns --overwrite",
+    "buildmac": "electron-builder --platform=mac --arch=x64",
+    "buildwin": "electron-builder --platform=win --arch=x64"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^5.0.2"
+    "electron": "^5.0.2",
+    "electron-packager": "^13.1.1"
   },
   "dependencies": {
     "mathjs": "^6.0.1"

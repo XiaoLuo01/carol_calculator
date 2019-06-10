@@ -4,7 +4,7 @@ var path = require('path')
 // 使用函数封装创建系统托盘图标
 function creatTray(win) {
     // 创建系统托盘图标对象
-    let tray = new Tray(path.join(__dirname, '../images/tray.png'))
+    let tray = new Tray(path.join(__dirname, '../images/icon.ico'))
 
     // 设置鼠标指针在托盘图标上悬停显示的文本
     tray.setToolTip('Carol_Calculator')
