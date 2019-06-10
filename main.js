@@ -3,7 +3,7 @@
  */
 
  // 开启一个应用, 需要引入 app
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 var path = require('path')
 
 // 当我们启动 main.js 文件的时候, 会自动的触发 app 的 ready 事件
@@ -18,7 +18,10 @@ function myCreatWindow() {
     let win = new BrowserWindow({
         width: 320,
         height: 519,
-        title: 'Carol_Calculator'
+        title: 'Carol_Calculator',
+        webPreferences: {
+            nodeIntegration: true
+        }
     })
 
     // 设置窗口中所加载的页面的内容
@@ -44,4 +47,10 @@ function myCreatWindow() {
 
     // 引入菜单模块
     require('./mainProcess/menu')
+
+    // 通过 ipcMain 监听渲染进程发送过来的消息
+    ipcMain.on('c_setColor', (event, color) => {
+        // 从主进程向渲染进程发送消息
+        win.webContents.send('c_setColortoRender', color)
+    })
 }

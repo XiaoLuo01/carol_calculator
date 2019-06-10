@@ -102,10 +102,13 @@ function c_setColor() {
     let win = new BrowserWindow({
         width: 250,
         height: 100,
-        title: '选择颜色'
+        title: '选择颜色',
+        webPreferences: {
+            nodeIntegration: true
+        }
     })
     //  加载 color 静态页面
     win.loadURL(path.join(__dirname, '../views/color.html'))
     // 设置当前窗体不显示菜单项
     win.setMenu(null)
-}
+}  

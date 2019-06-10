@@ -18,10 +18,10 @@
     background-color: black
 }
 #box > span:nth-of-type(4){
-    background-color: rgb(14, 179, 28)
+    background-color: #0eb31c
 }
 #box > span:nth-of-type(5){
-    background-color: rgb(91, 68, 194)
+    background-color: #5b44c2
 }
 span:hover{
     opacity: 0.6;
