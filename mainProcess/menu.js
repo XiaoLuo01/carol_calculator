@@ -56,22 +56,23 @@ let template = [
             {
                 label: '字体增大',
                 accelerator: 'F11',
-                click: function () {
-                    
+                click: function (item, win, event) {
+                    // 主进程向渲染进行发消息, menu.js 是主进程
+                    win.webContents.send('c_add')
                 }
             },
             {
                 label: '字体减小',
                 accelerator: 'F12',
-                click: function () {
-
+                click: function (item, win, event) {
+                    win.webContents.send('c_sub')
                 }
             },
             {
                 label: '默认字体',
                 accelerator: 'F10',
-                click: function () {
-
+                click: function (item, win, event) {
+                    win.webContents.send('c_default')
                 }
             }
         ]
