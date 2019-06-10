@@ -33,9 +33,16 @@ function myCreatWindow() {
     // 添加事件 - 当窗口关闭的时候触发
     win.on('close', function (event) {
         // 讲 win 重置为 null
-        win = null
+        // win = null
         // 应用程序退出
-        app.quit()
+        // app.quit()
+
+        // 只是对窗口隐藏
+        win.hide()
+        // 隐藏任务栏图标
+        win.setSkipTaskbar(true)
+        // 阻止默认行为
+        event.preventDefault()
     })
 
     // 当窗口加载完毕之后, 准备显示的时候触发
@@ -47,6 +54,9 @@ function myCreatWindow() {
 
     // 引入菜单模块
     require('./mainProcess/menu')
+    // 引入系统托盘
+    var createTray = require('./mainProcess/tray')
+    createTray(win)
 
     // 通过 ipcMain 监听渲染进程发送过来的消息
     ipcMain.on('c_setColor', (event, color) => {

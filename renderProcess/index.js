@@ -115,8 +115,8 @@ let main = {
     }
 }
 
-// // 单机右键弹出右键菜单(上下文菜单)
-// document.oncontextmenu = () => {
-//     // 渲染进程向主进程发送消息
-//     ipcRenderer.send('c_showContextMenu')
-// }
+// 单机右键弹出右键菜单(上下文菜单)
+document.oncontextmenu = () => {
+    // 渲染进程向主进程发送消息
+    ipcRenderer.send('c_showContextMenu')
+}

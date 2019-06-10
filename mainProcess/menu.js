@@ -2,7 +2,7 @@
  * 菜单项
  */
 
-const { Menu, BrowserWindow, dialog} = require('electron')
+const { Menu, BrowserWindow, dialog, ipcMain} = require('electron')
 var path = require('path')
 
 // 构建具体的菜单项
@@ -113,3 +113,8 @@ function c_setColor() {
     // 设置当前窗体不显示菜单项
     win.setMenu(null)
 }  
+
+// 在主进程中监听渲染进程发送的显示右键菜单的消息
+ipcMain.on('c_showContextMenu', () => {
+    menu.popup({})
+})
